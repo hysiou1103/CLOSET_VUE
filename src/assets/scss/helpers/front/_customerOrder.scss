@@ -1,0 +1,49 @@
+.customerOrder{
+    max-height: 350px;
+    overflow:auto;
+    table{
+        box-shadow: none;
+        tbody,thead,tfoot{
+            border-left:1px solid rgba($color: $secondary, $alpha: 0.4);
+            border-right:1px solid rgba($color: $secondary, $alpha: 0.4);
+        }
+    }
+    img{
+        max-width: 60px;
+    }
+    a:hover,a:active{
+        text-decoration: none;
+
+    }
+    tr td:nth-child(2) span{
+        display: none;
+        @include small-mobile{
+            display: block;
+        }
+    }
+    .unit,
+    .final_total {
+        @include small-mobile{
+            display:none;
+        }
+    }
+}
+.orderInfo{
+    .btn{
+        width: 98%;
+        &.prohibit{
+            cursor: not-allowed;
+        }
+    }
+    a:hover,a:active{
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bolder;
+    }
+}
+.hasCoupon{
+    text-decoration: line-through;
+    @include small-mobile {
+        display: none;
+    }
+}

@@ -1,0 +1,44 @@
+.checkOut{
+    min-height: calc(100vh - 103px - 127px);
+
+    @include lowerIpad {
+        min-height: calc(100vh - 103px - 84px);
+    }
+
+    @include small-mobile {
+        min-height: calc(100vh - 114px - 103px);
+    }
+}
+.order{
+    .showdata {
+        border: none;
+        border-radius: none;
+    }
+    .orderList{
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 1s ease;
+        img{
+            width: 100px;
+            @include ipad {
+                width: 80px;
+            }
+            @include small-mobile{
+                width: 45px;
+            }
+        }
+    }
+    .show {
+        max-height: 300px;
+        overflow: auto;
+    }
+    h6{
+        border-bottom: 1px solid rgba($color: $primary, $alpha: 0.4);
+    }
+    table{
+        box-shadow: none;
+    }
+    .delete{
+        text-decoration: line-through;
+    }
+}

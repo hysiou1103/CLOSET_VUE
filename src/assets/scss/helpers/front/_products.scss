@@ -1,0 +1,100 @@
+.wrong-alert{
+    margin: 0 auto;
+    min-height: calc(100vh - 103px - 127px);
+
+    @include lowerIpad {
+        min-height: calc(100vh - 103px - 84px);
+    }
+
+    @include small-mobile {
+        min-height: calc(100vh - 114px - 103px);
+    }
+    a {
+        @include small-mobile {
+            font-size: 1rem;
+        }
+    }
+}
+.products .sideList{
+    @include lowerIpad{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 0;
+    }
+    & li:nth-child(4) a{
+        @include small-mobile{
+            display: none;
+        }
+    }
+    & li:nth-child(5) a{
+        display: none;
+        @include small-mobile {
+            display: block;
+        }
+    }
+    a{
+        &.active{
+            font-weight: bolder;
+        }
+        font-size: 16px;
+        @include mobile{
+            padding: 0.5rem 0.5rem;
+        }
+    }
+}
+.products-list{
+justify-content: start;
+padding-left: 0;
+@include mobile{
+    justify-content:center;
+}
+    li{
+        width: 31.33%;
+        margin: 0 1% 20px 1%;
+        @include desktop{
+            width:47% ;
+        }
+        @include mobile {
+            width: 80%;
+        }
+        a{
+            &:hover,&:link{
+                text-decoration: none;
+            }
+        }
+        .img{
+            max-height:260px;
+            overflow: hidden;
+            position: relative;
+            @include desktop{
+                max-height: 290px;
+            }
+            &:hover{
+                filter: opacity(60%);
+                & button {
+                    display: block;
+                }
+            }
+            img{
+                transition: transform .5s ease;
+            }
+            &:hover img{
+                transform: scale(1.2);
+            }
+            button{
+                display: none;
+                position: absolute;
+                top: 50%;
+                left: 35.5%;
+            }
+        }
+        .productTitle{
+            height: 32px;
+            &:hover{
+                text-decoration: none;
+            }
+        }
+        
+    }
+}

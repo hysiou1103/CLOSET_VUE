@@ -1,0 +1,67 @@
+@import '~bootstrap/scss/functions';
+@import './helpers/_variables';
+@import '~bootstrap/scss/bootstrap';
+
+//自定義
+@import './helpers/mixin';
+// components
+@import'./helpers/components/layout';
+@import './helpers/components/goTop';
+@import './helpers/components/orderNav';
+@import './helpers/components/popular';
+// view
+@import './helpers/back/login';
+@import './helpers/back/dashboard';
+@import './helpers/front/products';
+@import './helpers/front/productDetail';
+@import './helpers/front/cart';
+@import './helpers/front/customerCoupon';
+@import './helpers/front/collect';
+@import './helpers/front/customerOrder';
+@import './helpers/front/customerCheckout';
+@import './helpers/front/home';
+@import './helpers/front/completeOrder';
+@import './helpers/front/faq';
+
+
+//共同設定
+table {
+    box-shadow: 5px 3px 3px rgba($color: #cfc8c8, $alpha: 0.6);
+};
+li {
+    list-style: none;
+}
+.navbar{
+    box-shadow: none;
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+.preFadein {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+.fadeIn {
+    opacity: 1;
+    transform: translateY(0px);
+}
+.autoFadein{
+    opacity: 0;
+    transform: translateY(20px);
+    animation-name: autoPlay;
+    animation-duration: 0.5s;
+    animation-delay: 0.3s;
+    animation-fill-mode: forwards;
+}
+@keyframes autoPlay{
+    0%{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}

@@ -1,0 +1,78 @@
+.favItems-list {
+    padding-left: 0;
+    @include mobile {
+        justify-content: center;
+    }
+    li {
+        width: 30%;
+        margin: 0 1.66% 0 1.66%;
+        @include desktop {
+            width: 45%;
+        }
+        @include mobile {
+            width: 60%;
+        }
+
+        .img {
+            max-height: 300px;
+            overflow: hidden;
+            position: relative;
+
+            &:hover {
+                filter: opacity(60%);
+
+                & button {
+                    display: block;
+                }
+            }
+
+            img {
+                transition: transform .5s ease;
+            }
+
+            &:hover img {
+                transform: scale(1.2);
+            }
+
+            button {
+                display: none;
+                position: absolute;
+                top: 50%;
+                left: 35.5%;
+            }
+
+        }
+        .deleteIcon{
+            color: rgba($color: $secondary, $alpha: 0.4);
+            transition: transform 0.5s ease;
+            &:hover,&:active{
+                transform: scale(1.2);
+                color: rgba($color: $secondary, $alpha: 0.8);
+            }
+        }
+        .addcart .btn {
+            width: 90%;
+        }
+    }
+}
+.emptyCollect {
+    margin: 0 auto;
+    min-height: calc(100vh - 103px - 127px);
+    @include lowerIpad{
+        min-height: calc(100vh - 103px - 84px);
+    }
+    @include small-mobile {
+        min-height: calc(100vh - 114px - 103px);
+    }
+    a{
+        @include small-mobile {
+            font-size: 1rem;
+        }
+    }
+    .smaller{
+        display: inline-block;
+        @media (min-width:767px) {
+            display: none;
+        }
+    }
+}

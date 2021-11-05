@@ -1,0 +1,28 @@
+.login{
+    max-width: 350px;
+    margin: 0 auto;
+    a:hover,a:active{
+        text-decoration: none;
+    }
+    input{
+        width: 96%;
+    }
+    .btn{
+        width: 96%;
+        background-color: white;
+        transition: background-color 0.4s ease-in-out;
+    }
+    .btn:hover,.btn:active{
+        color: $primary;
+        background-color: $secondary
+    }
+    .fb{
+        color: #4267B2;
+        border: 1px solid#4267B2;
+            &:hover,&:active{
+                color: white;
+                background-color:#4267B2;
+            }
+    }
+
+}

@@ -1,0 +1,12 @@
+.goTop{
+    position: fixed;
+    bottom: 60px;
+    right: 0;
+    color: theme-color-level(primary,4);
+    font-size: 2rem;
+    z-index: 1400;
+    @include small-mobile{
+        right: -18px;
+    }
+
+}
