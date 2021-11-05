@@ -68,8 +68,8 @@ export default new Vuex.Store({
     },
     addCart (context) {
       const vm = this
-      context.commit('LOADING', true)
       const addApi = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`
+      console.dir(vm.state.apiCarts, '要刪除的暫存')
       if (vm.state.apiCarts.length !== 0) { // 後端伺服器有商品資料時，全部刪除
         vm.state.apiCarts.carts.forEach((item) => {
           const delApi = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart/${item.id}`
@@ -90,14 +90,13 @@ export default new Vuex.Store({
         }
         axios.post(addApi, { data: data }).then((response) => {
           if (response.data.success) {
-            context.dispatch('getCart') // 重新取得購物車列表
+            context.dispatch('getCart')
           }
         })
           .catch((err) => {
             console.log(err)
           })
       })
-      context.commit('LOADING', false)
     },
     getCart (context) {
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`

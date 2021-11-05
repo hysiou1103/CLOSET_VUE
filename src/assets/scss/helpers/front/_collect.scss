@@ -1,22 +1,42 @@
 .favItems-list {
     padding-left: 0;
+
     @include mobile {
         justify-content: center;
     }
+
     li {
-        width: 30%;
-        margin: 0 1.66% 0 1.66%;
-        @include desktop {
-            width: 45%;
+        width: 29%;
+        margin: 0 2% 0 2%;
+
+        @include lowerIpad {
+            width: 46%;
         }
-        @include mobile {
-            width: 60%;
+
+        @include small-mobile {
+            width: 75%;
         }
 
         .img {
             max-height: 300px;
             overflow: hidden;
             position: relative;
+
+            @include desktop {
+                max-height: 245px;
+            }
+
+            @include lowerIpad {
+                max-height: 280px;
+            }
+
+            @include mobile {
+                max-height: 215px;
+            }
+
+            @include small-mobile {
+                max-height: 250px;
+            }
 
             &:hover {
                 filter: opacity(60%);
@@ -42,35 +62,58 @@
             }
 
         }
-        .deleteIcon{
+
+        .deleteIcon {
             color: rgba($color: $secondary, $alpha: 0.4);
             transition: transform 0.5s ease;
-            &:hover,&:active{
+
+            &:hover,
+            &:active {
                 transform: scale(1.2);
                 color: rgba($color: $secondary, $alpha: 0.8);
             }
         }
+
+        .card-body {
+            padding: 1rem;
+        }
+
+        .card-title {
+            height: 48px;
+
+            @include small-mobile {
+                height: 25px;
+            }
+
+        }
+
         .addcart .btn {
             width: 90%;
         }
     }
 }
+
 .emptyCollect {
     margin: 0 auto;
     min-height: calc(100vh - 103px - 127px);
-    @include lowerIpad{
+
+    @include lowerIpad {
         min-height: calc(100vh - 103px - 84px);
     }
+
     @include small-mobile {
         min-height: calc(100vh - 114px - 103px);
     }
-    a{
+
+    a {
         @include small-mobile {
             font-size: 1rem;
         }
     }
-    .smaller{
+
+    .smaller {
         display: inline-block;
+
         @media (min-width:767px) {
             display: none;
         }

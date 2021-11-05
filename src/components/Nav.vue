@@ -29,7 +29,7 @@
                                             <tr v-for="item in carts" :key="item.product_id">
                                                 <td class="text-truncate">
                                                     <router-link
-                                                    :to="{name:'productDetail',params:{productId:item.product_id}}">
+                                                    :to="{name:'productDetail',params:{productId:item.product_id}}" :title="item.title">
                                                         {{item.title}}
                                                     </router-link>
                                                 </td>
