@@ -5,10 +5,6 @@ import Front from '../views/front/Front.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '*',
-    redirect: '/'
-  },
   { // 前台
     path: '/',
     component: Front,
@@ -70,7 +66,6 @@ const routes = [
     name: 'Login',
     component: () => import('../views/back/Login.vue')
   },
-
   { // 後台
     path: '/admin',
     name: 'Admin',
@@ -96,6 +91,10 @@ const routes = [
         meta: { requiresAuth: true }
       }
     ]
+  },
+  {
+    path: '*',
+    redirect: '/'
   }
 ]
 

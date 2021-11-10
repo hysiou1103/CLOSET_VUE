@@ -1,62 +1,108 @@
 <template>
-    <div>
-      <section class="container">
-        <template v-if="len!== 0">
-            <ul class="d-flex flex-wrap favItems-list autoPlay">
-              <li v-for="item in favItems" :key="item.id" class="my-3">
-                <div class="card">
-                  <div class="img">
-                    <router-link :to="{ name: 'productDetail', params: { productId:`${item.id}` }}">
-                      <img :src="item.imageUrl" class="card-img-top" alt="product photo">
-                      <button class="btn btn-outline-light">More</button>
-                    </router-link>
-                  </div>
-                  <div class="card-body">
-                    <div class="card-title text-primary d-flex justify-content-between">
-                      <h5>{{item.title}}</h5>
-                      <a href="#" class="deleteIcon" @click.prevent="deleteFav(item)"><i class="fas fa-times"></i></a>
-                    </div>
-                    <div class="card-text d-flex justify-content-between align-items-center">
-                      <p class="h5 text-danger">{{item.price | currency}}元</p>
-                      <div class="text-secondary" v-if="item.origin_price"><s>{{item.origin_price | currency}}元</s></div>
-                    </div>
-                  </div>
-                  <div class="addcart text-center mb-3">
-                    <button class="btn btn-outline-warning" @click="addStorage(item)">加到購物車</button>
-                  </div>
+  <div>
+    <section class="container">
+      <template v-if="len !== 0">
+        <ul class="d-flex flex-wrap favItems-list autoPlay">
+          <li v-for="item in favItems" :key="item.id" class="my-3">
+            <div class="card">
+              <div class="img">
+                <router-link
+                  :to="{
+                    name: 'productDetail',
+                    params: { productId: `${item.id}` },
+                  }"
+                >
+                  <img
+                    :src="item.imageUrl"
+                    class="card-img-top"
+                    alt="product photo"
+                  />
+                  <button type="button" class="btn btn-outline-light">
+                    More
+                  </button>
+                </router-link>
               </div>
-              </li>
-            </ul>
-        </template>
-        <!-- 未關注任何商品時顯示 -->
-        <template v-else>
-          <div class="emptyCollect d-flex align-items-center justify-content-center autoPlay">
-            <router-link to="/products" class="nav-link d-md-block d-none h5">
-              <i class="far fa-hand-point-right"></i>  您尚未收藏任何商品，立即前往賣場選購  <i class="far fa-hand-point-left"></i>
-            </router-link>
-            <router-link to="/products" class="nav-link smaller">
-              <i class="far fa-hand-point-right"></i>  您尚未收藏任何商品，立即前往賣場選購  <i class="far fa-hand-point-left"></i>
-            </router-link>
-          </div>
-        </template>
-      </section>
-    </div>
+              <div class="card-body">
+                <div
+                  class="card-title text-primary d-flex justify-content-between"
+                >
+                  <h5>{{ item.title }}</h5>
+                  <a
+                    href="#"
+                    class="deleteIcon"
+                    @click.prevent="deleteFav(item)"
+                    ><i class="fas fa-times"></i
+                  ></a>
+                </div>
+                <div
+                  class="
+                    card-text
+                    d-flex
+                    justify-content-between
+                    align-items-center
+                  "
+                >
+                  <p class="h5 text-danger">{{ item.price | currency }}元</p>
+                  <div class="text-secondary" v-if="item.origin_price">
+                    <s>{{ item.origin_price | currency }}元</s>
+                  </div>
+                </div>
+              </div>
+              <div class="addcart text-center mb-3">
+                <button
+                  type="button"
+                  class="btn btn-outline-warning"
+                  @click="addStorage(item)"
+                >
+                  加到購物車
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </template>
+      <!-- 未關注任何商品時顯示 -->
+      <template v-else>
+        <div
+          class="
+            emptyCollect
+            d-flex
+            align-items-center
+            justify-content-center
+            autoPlay
+          "
+        >
+          <router-link to="/products" class="nav-link d-md-block d-none h5">
+            <i class="far fa-hand-point-right"></i>
+            您尚未收藏任何商品，立即前往賣場選購
+            <i class="far fa-hand-point-left"></i>
+          </router-link>
+          <router-link to="/products" class="nav-link smaller">
+            <i class="far fa-hand-point-right"></i>
+            您尚未收藏任何商品，立即前往賣場選購
+            <i class="far fa-hand-point-left"></i>
+          </router-link>
+        </div>
+      </template>
+    </section>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Collect',
+  name: "Collect",
   data () {
     return {
-      favItems: JSON.parse(localStorage.getItem('favItems')) || [],
-      favItemsId: JSON.parse(localStorage.getItem('favItemsId')) || [],
+      favItems: JSON.parse(localStorage.getItem("favItems")) || [],
+      favItemsId: JSON.parse(localStorage.getItem("favItemsId")) || [],
       len: 0,
       tempProduct: {}
-    }
+    };
   },
   methods: {
-    addStorage (item) { // 加入購物車
-      const vm = this
+    addStorage (item) {
+      // 加入購物車
+      const vm = this;
       vm.tempProduct = {
         product_id: item.id,
         qty: 1,
@@ -65,26 +111,26 @@ export default {
         price: item.price,
         title: item.title,
         unit: item.unit
-      }
-      vm.$store.dispatch('addStorage', vm.tempProduct)
-      vm.$bus.$emit('messagePush', '已加入購物車', 'success')
-      vm.tempProduct = {}
+      };
+      vm.$store.dispatch("addStorage", vm.tempProduct);
+      vm.$bus.$emit("messagePush", "已加入購物車", "success");
+      vm.tempProduct = {};
     },
-    deleteFav (item) { // 從收藏中移除
-      const vm = this
-      const itemNum = vm.favItems.indexOf(item)
-      const idNum = vm.favItemsId.indexOf(item.id)
-      vm.favItems.splice(itemNum, 1)
-      vm.favItemsId.splice(idNum, 1)
-      localStorage.setItem('favItems', JSON.stringify(vm.favItems))
-      localStorage.setItem('favItemsId', JSON.stringify(vm.favItemsId))
+    deleteFav (item) {
+      // 從收藏中移除
+      const vm = this;
+      const idNum = vm.favItemsId.indexOf(item.id);
+      vm.favItems.splice(idNum, 1);
+      vm.favItemsId.splice(idNum, 1);
+      localStorage.setItem("favItems", JSON.stringify(vm.favItems));
+      localStorage.setItem("favItemsId", JSON.stringify(vm.favItemsId));
     }
   },
   created () {
-    this.len = this.favItems.length
+    this.len = this.favItems.length;
   },
   beforeUpdate () {
-    this.len = this.favItems.length
+    this.len = this.favItems.length;
   }
-}
+};
 </script>

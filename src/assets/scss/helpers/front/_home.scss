@@ -1,250 +1,247 @@
 .banner {
-    .swiper-slide {
-        height: 550px;
-        @include bg-img;
-        background-size: cover;
-        @include ipad{
-            height: 400px;
-        }
-        @include small-mobile {
-            height: 300px;
-        }
-        &.slide-1 {
-            background-image: url('./assets/img/banner1.jpg')
-        }
-        &.slide-2 {
-            background-image: url('./assets/img/banner2.jpg')
-        }
-
-        &.slide-3 {
-            background-image: url('./assets/img/banner3.jpg')
-        }
-        &.slide-4 {
-            background-image: url('./assets/img/banner4.jpg')
-        }
+  .swiper-slide {
+    height: 550px;
+    @include bg-img;
+    background-size: cover;
+    @include ipad{
+      height: 400px;
     }
+    @include small-mobile {
+      height: 300px;
+    }
+    &.slide-1 {
+      background-image: url('./assets/img/banner1.jpg')
+    }
+    &.slide-2 {
+      background-image: url('./assets/img/banner2.jpg')
+    }
+
+    &.slide-3 {
+      background-image: url('./assets/img/banner3.jpg')
+    }
+    &.slide-4 {
+      background-image: url('./assets/img/banner4.jpg')
+    }
+  }
 }
 .intro {
-    position: relative;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    @include lowerIpad{
-        padding-top: 0;
-        padding-bottom: 0;
+  position: relative;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  @include lowerIpad{
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .concept {
+    height: 360px;
+    .conceptImage {
+      background-image: url('./assets/img/concept.jpg');
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      @include bg-img;
+      background-size: cover;
     }
-    .concept {
-        height: 360px;
-        .conceptImage {
-            background-image: url('./assets/img/concept.jpg');
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            @include bg-img;
-            background-size: cover;
-        }
-        h2{
-            @include small-mobile{
-                font-size: 24px;
-            }
-        }
-        .quote {
-            position: relative;
-            width: 350px;
-            color: theme-color-level(primary, -2);
-            font-size: 18px;
-            @include small-mobile{
-                font-size: 16px;
-                width: 300px;
-            }
-            & span::before {
-                position: absolute;
-                left: 0;
-                top: 50%;
-                content: '';
-                width: 50px;
-                height: 1px;
-                border-bottom: 1px solid rgba(theme-color-level(primary, -3), 0.5);
-            }
-        }
-
-        p {
-            color: white;
-
-            @include lowerIpad {
-                padding: 16px 0;
-            }
-        }
-        @media (min-width: 768px) {
-            .text-md-dark {
-                color: black;
-            }
-        }
-
-        a {
-            @include button(white)
-        }
+    h2{
+      @include small-mobile{
+        font-size: 24px;
+      }
     }
+    .quote {
+      position: relative;
+      width: 350px;
+      color: theme-color-level(primary, -2);
+      font-size: 18px;
+      @include small-mobile{
+        font-size: 16px;
+        width: 300px;
+      }
+      & span::before {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        content: '';
+        width: 50px;
+        height: 1px;
+        border-bottom: 1px solid rgba(theme-color-level(primary, -3), 0.5);
+      }
+    }
+    p {
+      color: white;
+
+      @include lowerIpad {
+        padding: 16px 0;
+      }
+    }
+    @media (min-width: 768px) {
+      .text-md-dark {
+        color: black;
+      }
+    }
+    a {
+      @include button(white)
+    }
+  }
 }
 .productLink ul {
-    flex-wrap: wrap;
-    li {
-        max-height: 380px;
-        overflow: hidden;
-        width: 25%;
-        position: relative;
-        @include desktop{
-            max-height: 280px;
-        }
-        @include ipad{
-            width: 50%;
-            max-height:350px
-        }
-        @include mobile{
-            max-height: 250px;
-        }
-            @include small-mobile {
-                max-height: 160px;
-            }
-        img {
-            filter: brightness(0.7);
-            transition: all 0.2s ease;
-        }
-        a:hover img {
-                transform: scale(1.1);
-                filter: brightness(1)
-        }
-        .category {
-            color: white;
-            font-size: 24px;
-            font-weight: 600;
-            @include mobile {
-                font-size: 18px;
-            }
-        }
-        .link{
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
-        }
+  flex-wrap: wrap;
+  li {
+    max-height: 380px;
+    overflow: hidden;
+    width: 25%;
+    position: relative;
+    @include desktop{
+      max-height: 280px;
     }
+    @include ipad{
+      width: 50%;
+      max-height:350px
+    }
+    @include mobile{
+      max-height: 250px;
+    }
+    @include small-mobile {
+      max-height: 160px;
+    }
+    img {
+      filter: brightness(0.7);
+      transition: all 0.2s ease;
+    }
+    a:hover img {
+      transform: scale(1.1);
+      filter: brightness(1)
+    }
+    .category {
+      color: white;
+      font-size: 24px;
+      font-weight: 600;
+      @include mobile {
+        font-size: 18px;
+      }
+    }
+    .link{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+    }
+  }
 }
 .subscribe {
-    height: 300px;
-    background-image: url('./assets/img/subscribeBg.jpg');
-    background-size: cover;
-    color: $dark;
-    @include bg-img;
-    @include mobile{
-        color: white;
+  height: 300px;
+  background-image: url('./assets/img/subscribeBg.jpg');
+  background-size: cover;
+  color: $dark;
+  @include bg-img;
+  @include mobile{
+    color: white;
+  }
+  .row{
+    height: 100%;
+  }
+  input{
+    width: 65%;
+  }
+  button{
+    width: 35%;
+    transition: background-color 0.5s ease;
+    &:hover,&:active{
+      color: black;
+      background-color: $light;
+      border-color: rgba($light,0.4);
     }
-    .row{
-        height: 100%;
-    }
-    input{
-        width: 65%;
-    }
-    button{
-        width: 35%;
-        transition: background-color 0.5s ease;
-        &:hover,&:active{
-            color: black;
-            background-color: $light;
-            border-color: rgba($light,0.4);
-        }
-    }
+  }
 }
 .adsWrap{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1500;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    &.adsShow {
-        opacity: 1;
-    }
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1500;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  &.adsShow {
+    opacity: 1;
+  }
 }
 .ads {
-    position: relative;
-    .first,
-    .second,
-    .third {
-        width: 330px;
-        height: 230px;
-        opacity: 0.6;
+  position: relative;
+  .first,
+  .second,
+  .third {
+    width: 330px;
+    height: 230px;
+    opacity: 0.6;
+    @include small-mobile{
+      width: 280px;
+      height: 180px;
+    }
+  }
+  .first {
+    background-color: theme-color-level(secondary, -3);
+  }
+  .second {
+    position: absolute;
+    top: 8%;
+    left: 8%;
+    background-color: theme-color-level(primary, 4);
+  }
+  .third {
+    position: absolute;
+    top: 4%;
+    left: 4%;
+    background-color: theme-color-level(warning, -9);
+  }
+  .forth {
+    position: absolute;
+    top: 0;
+    width: 330px;
+    height: 230px;
+    background-color: transparent;
+    @include small-mobile {
+      width: 280px;
+      height: 180px;
+    }
+    .closeIcon a {
+      display: block;
+      padding-top: 4%;
+      color: rgba($secondary, 0.7);
+      font-size: 18px;
+      transition: color 0.3s ease;
+      @include small-mobile{
+        font-size: 16px;
+        padding: 2%;
+      }
+      &:hover,
+      &:active {
+        color: $secondary;
+      }
+    }
+    a:hover,a:active{
+      text-decoration: none;
+    }
+    .container {
+      color: $light;
+      p {
+        font-size: 16px;
+        line-height: 2.5;
         @include small-mobile{
-            width: 280px;
-            height: 180px;
+          font-size: 14px;
+          line-height: 2;
         }
-    }
-    .first {
-        background-color: theme-color-level(secondary, -3);
-    }
-    .second {
-        position: absolute;
-        top: 8%;
-        left: 8%;
-        background-color: theme-color-level(primary, 4);
-    }
-    .third {
-        position: absolute;
-        top: 4%;
-        left: 4%;
-        background-color: theme-color-level(warning, -9);
-    }
-    .forth {
-        position: absolute;
-        top: 0;
-        width: 330px;
-        height: 230px;
-        background-color: transparent;
-        @include small-mobile {
-            width: 280px;
-            height: 180px;
+      }
+      span {
+        font-size: 20px;
+        font-weight: bolder;
+        @include small-mobile{
+          font-size: 18px;
         }
-        .closeIcon a {
-            display: block;
-            padding-top: 4%;
-            color: rgba($secondary, 0.7);
-            font-size: 18px;
-            transition: color 0.3s ease;
-            @include small-mobile{
-                font-size: 16px;
-                padding: 2%;
-            }
-            &:hover,
-            &:active {
-                color: $secondary;
-            }
-        }
-        a:hover,a:active{
-            text-decoration: none;
-        }
-        .container {
-            color: $light;
-            p {
-                font-size: 16px;
-                line-height: 2.5;
-                @include small-mobile{
-                    font-size: 14px;
-                    line-height: 2;
-                }
-            }
-
-            span {
-                font-size: 20px;
-                font-weight: bolder;
-                @include small-mobile{
-                    font-size: 18px;
-                }
-            }
-        }
+      }
     }
+  }
 }

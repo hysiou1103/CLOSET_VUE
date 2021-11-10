@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     carts: JSON.parse(localStorage.getItem('carts')) || [],
-    apiCarts: [],
+    apiCarts: JSON.parse(localStorage.getItem('apiCarts')) || [],
     isLoading: false
   },
   mutations: {
@@ -47,6 +47,7 @@ export default new Vuex.Store({
     },
     GETCART (state, payload) {
       state.apiCarts = payload
+      localStorage.setItem('apiCarts', JSON.stringify(state.apiCarts))
     }
   },
   actions: {
@@ -66,37 +67,25 @@ export default new Vuex.Store({
       context.commit('UPDATESTORAGE', { item, num })
       context.commit('LOADING', false)
     },
-    addCart (context) {
+    async addCart (context) {
+      context.commit('LOADING', true)
       const vm = this
       const addApi = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`
-      console.dir(vm.state.apiCarts, '要刪除的暫存')
-      if (vm.state.apiCarts.length !== 0) { // 後端伺服器有商品資料時，全部刪除
-        vm.state.apiCarts.carts.forEach((item) => {
-          const delApi = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart/${item.id}`
-          axios.delete(delApi).then((response) => {
-            if (response.data.success) {
-              console.log(response.data)
-            }
-          })
-            .catch((err) => {
-              console.log(err)
-            })
-        })
-      }
-      vm.state.carts.forEach((item) => { // 從localstorage裡面加入(確保是使用者最新的選擇)
-        const data = {
-          product_id: item.product_id,
-          qty: item.qty
+      if (vm.state.apiCarts.length !== 0) {
+        for (let i = 0; i < vm.state.apiCarts.carts.length; i++) {
+          const delApi = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart/${vm.state.apiCarts.carts[i].id}`
+          await axios.delete(delApi)
         }
-        axios.post(addApi, { data: data }).then((response) => {
-          if (response.data.success) {
-            context.dispatch('getCart')
-          }
-        })
-          .catch((err) => {
-            console.log(err)
-          })
-      })
+      }
+      for (let i = 0; i < vm.state.carts.length; i++) {
+        const data = {
+          product_id: vm.state.carts[i].product_id,
+          qty: vm.state.carts[i].qty
+        }
+        await axios.post(addApi, { data: data })
+      }
+      context.dispatch('getCart')
+      context.commit('LOADING', false)
     },
     getCart (context) {
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`

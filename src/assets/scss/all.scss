@@ -26,42 +26,42 @@
 
 //共同設定
 table {
-    box-shadow: 5px 3px 3px rgba($color: #cfc8c8, $alpha: 0.6);
+  box-shadow: 5px 3px 3px rgba($color: #cfc8c8, $alpha: 0.6);
 };
 li {
-    list-style: none;
+  list-style: none;
 }
 .navbar{
-    box-shadow: none;
+  box-shadow: none;
 }
 img{
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 .preFadein {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
 }
 .fadeIn {
-    opacity: 1;
-    transform: translateY(0px);
+  opacity: 1;
+  transform: translateY(0px);
 }
 .autoFadein{
-    opacity: 0;
-    transform: translateY(20px);
-    animation-name: autoPlay;
-    animation-duration: 0.5s;
-    animation-delay: 0.3s;
-    animation-fill-mode: forwards;
+  opacity: 0;
+  transform: translateY(20px);
+  animation-name: autoPlay;
+  animation-duration: 0.5s;
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards;
 }
 @keyframes autoPlay{
-    0%{
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100%{
-        opacity: 1;
-        transform: translateY(0px);
-    }
+  0%{
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }

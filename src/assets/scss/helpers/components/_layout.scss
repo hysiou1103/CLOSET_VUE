@@ -1,240 +1,234 @@
 //header
 .header {
-    position: relative;
-    background-color: white;
+  position: relative;
+  background-color: white;
+  flex-direction: column;
+  z-index: 1200;
+  box-shadow: 2px 2px 3px 0 rgba($color: #000000, $alpha: 0.2);
+  @include lowerIpad {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  @include small-mobile{
     flex-direction: column;
-    z-index: 1200;
-    box-shadow: 2px 2px 3px 0 rgba($color: #000000, $alpha: 0.2);
+  }
+  h1 {
+    width: 100%;
+    text-align: center;
     @include lowerIpad {
-        flex-direction: row;
-        justify-content: space-between;
+      width: 40%;
     }
-    @include small-mobile{
-        flex-direction: column;
+    .logo {
+      width: 60px;
+      height: 60px;
+      background-image: url('./assets/img/logo.png');
+      @include bg-img;
+      background-size: contain;
+      text-indent: 101%;
+      white-space: nowrap;
+      overflow: hidden;
+      &:hover,&:active{
+        transform: scale(1.2);
+      }
     }
-    h1 {
-        width: 100%;
-        text-align: center;
-        @include lowerIpad {
-            width: 40%;
-        }
-        .logo {
-            width: 60px;
-            height: 60px;
-            background-image: url('./assets/img/logo.png');
-            @include bg-img;
-            background-size: contain;
-            text-indent: 101%;
-            white-space: nowrap;
-            overflow: hidden;
-            &:hover,&:active{
-                transform: scale(1.2);
-            }
-        }
-    }
+  }
 }
 .headerWrap .navbar {
+  position: relative;
+  width: 100%;
+  justify-content: center;
+  @include desktop {
+    justify-content: flex-start;
+  }
+  .active{
+    color: theme-color-level(primary, 6);
+    transform: scale(1.2);
+  }
+  a {
+    border-bottom: 2px solid transparent;
+  }
+  a:hover,
+  a:active {
+    @include a;
+  }
+  .pageNav {
+    display: flex;
+    @include lowerIpad {
+      display: none;
+    }
+  }
+  .iconGroup {
+    position: absolute;
+    right: 120px;
+    font-size: 18px;
+    & li:nth-child(4) a:active {
+      border: none;
+    }
+    @include ipad{
+      right: 100px;
+    }
+    @include small-mobile{
+      position: unset;
+      width:100%;
+      padding-left: 0;
+      justify-content: center;
+    }
+    .dropdown-toggle::after{
+      display: none;
+    }
+    .dropdown-menu {
+      overflow: auto;
+      max-height: 320px;
+      a:hover,a:active{
+        color: white;
+        border: none;
+      }
+      small a{
+        &:hover,&:active{
+          color: theme-color-level(primary,4);
+          border: none;
+        }
+      }
+      .empty{
+        width:250px
+      }
+      .text-truncate a{
+        &:hover,&:active{
+          color: theme-color-level(primary,4);
+        }
+      }
+    }
+  }
+  .cartIcon {
     position: relative;
-    width: 100%;
-    justify-content: center;
-    @include desktop {
-        justify-content: flex-start;
+    .cartCount {
+      display: inline-block;
+      position: absolute;
+      right: 15%;
+      top: 10%;
+      width: 18px;
+      height: 18px;
+      background-color: $warning;
+      color: white;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
     }
-    .active{
-        color: theme-color-level(primary, 6);
-        transform: scale(1.2);
+  }
+  table{
+    box-shadow: none;
+    margin-bottom: 0;
+    button,a{
+      width: 100%;
+      @include button(white)
     }
-    a {
-        border-bottom: 2px solid transparent;
+    .goCart {
+      width: 90%;
+      border-bottom: 1px solid $warning;
     }
-    a:hover,
-    a:active {
-        @include a;
+    tr td:nth-child(1) {
+      max-width: 110px;
+      white-space: nowrap;
+      overflow: hidden;
     }
-    .pageNav {
-        display: flex;
-        @include lowerIpad {
-            display: none;
-        }
+    tbody>tr:nth-child(1) {
+      border-top: 1px solid rgba($color: $secondary, $alpha: 0.2);
     }
-    .iconGroup {
-        position: absolute;
-        right: 120px;
-        font-size: 18px;
-        & li:nth-child(4) a:active {
-            border: none;
-        }
-        @include ipad{
-            right: 100px;
-        }
-        @include small-mobile{
-            position: unset;
-            width:100%;
-            padding-left: 0;
-            justify-content: center;
-        }
-        .dropdown-toggle::after{
-            display: none;
-        }
-        .dropdown-menu {
-            overflow: auto;
-            max-height: 320px;
-            a:hover,a:active{
-                color: white;
-                border: none;
-            }
-            small a{
-                &:hover,&:active{
-                    color: theme-color-level(primary,4);
-                    border: none;
-                }
-            }
-            .empty{
-                width:250px
-            }
-            .text-truncate a{
-                &:hover,&:active{
-                    color: theme-color-level(primary,4);
-                }
-            }
-        }
-    }
-    .cartIcon {
-        position: relative;
-        .cartCount {
-            display: inline-block;
-            position: absolute;
-            right: 15%;
-            top: 10%;
-            width: 18px;
-            height: 18px;
-            background-color: $warning;
-            color: white;
-            border-radius: 50%;
-            font-size: 12px;
-            font-weight: 600;
-            text-align: center;
-        }
-    }
-    table{
-        box-shadow: none;
-        margin-bottom: 0;
-        button,a{
-            width: 100%;
-            @include button(white)
-        }
-        .goCart {
-            width: 90%;
-            border-bottom: 1px solid $warning;
-        }
-        tr td:nth-child(1) {
-            max-width: 110px;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-        tbody>tr:nth-child(1) {
-            border-top: 1px solid rgba($color: $secondary, $alpha: 0.2);
-        }
-    }
-
+  }
 }
 .hamIcon {
     width: 24px;
     height: 24px;
     position: relative;
     @include lowerIpad {
-        display: block;
+      display: block;
     }
+  span {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      margin: auto;
+      width: 80%;
+      height: 2px;
+      background-color: $primary;
+      transition: all 0.2s ease;
 
-    span {
+      &::before,
+      &::after {
         position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        top: 0;
-        margin: auto;
-        width: 80%;
+        content: '';
+        width: 100%;
         height: 2px;
         background-color: $primary;
         transition: all 0.2s ease;
+      }
 
-        &::before,
-        &::after {
-            position: absolute;
-            content: '';
-            width: 100%;
-            height: 2px;
-            background-color: $primary;
-            transition: all 0.2s ease;
-        }
+      a:hover,
+      a:active {
+        border-bottom: none;
+      }
 
-        a:hover,
-        a:active {
-            border-bottom: none;
-        }
+      &::before {
+        transform: translateY(-6px);
+      }
 
-        &::before {
-            transform: translateY(-6px);
-        }
-
-        &::after {
-            transform: translateY(6px);
-        }
+      &::after {
+        transform: translateY(6px);
+      }
     }
 }
 .headerWrap {
+  .sideNav {
+    width: 50%;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding-top: 90px;
+    transform: translateX(999px);
+    transition: transform 0.2s ease;
+    background-color: white;
+    @include small-mobile{
+      padding-top: 120px;
+    }
+    & .active{
+      background-color: rgba($color: $primary, $alpha: 0.8);
+      color: white;
+    }
+  }
+
+  &.active {
+    .hamIcon span {
+      background-color: transparent;
+      &:before {
+        transform: rotate(220deg);
+      }
+      &:after {
+        transform: rotate(-220deg);
+      }
+    }
     .sideNav {
-        width: 50%;
-        position: fixed;
-        z-index: 1000;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        padding-top: 90px;
-        transform: translateX(999px);
-        transition: transform 0.2s ease;
-        background-color: white;
-        @include small-mobile{
-            padding-top: 120px;
-        }
-        & .active{
-            background-color: rgba($color: $primary, $alpha: 0.8);
-            color: white;
-        }
+      transform: translateX(0);
     }
-
-    &.active {
-        .hamIcon span {
-            background-color: transparent;
-
-            &:before {
-                transform: rotate(220deg);
-            }
-
-            &:after {
-                transform: rotate(-220deg);
-            }
-
-        }
-
-        .sideNav {
-            transform: translateX(0);
-        }
-    }
+  }
 }
 //header end
 
 //footer
 footer {
-    padding: 20px;
-    flex-direction: column;
-    border-top: 1px solid rgba($color: #000000, $alpha: 0.2);
-    color: white;
-    li a {
-        font-size: 1.5rem;
-        &:hover,&:active{
-            transform: scale(1.3);
-        }
+  padding: 20px;
+  flex-direction: column;
+  border-top: 1px solid rgba($color: #000000, $alpha: 0.2);
+  color: white;
+  li a {
+    font-size: 1.5rem;
+    &:hover,&:active{
+      transform: scale(1.3);
     }
+  }
 }
 //footer end

@@ -2,25 +2,24 @@
   <div class="home">
     <loading :active.sync="isLoading">
       <template slot="default">
-          <img src="@/assets/img/loading.gif" alt="loadingPhoto">
+        <img src="@/assets/img/loading.gif" alt="loadingPhoto" />
       </template>
     </loading>
-    <WebHeader/>
-    <Alert/>
+    <WebHeader />
+    <Alert />
     <router-view></router-view>
-    <GoTop/>
-    <WebFooter/>
+    <GoTop />
+    <WebFooter />
   </div>
-
 </template>
 
 <script>
-import WebHeader from '@/components/Nav'
-import WebFooter from '@/components/Footer'
-import Alert from '@/components/Alert'
-import GoTop from '@/components/GoTop'
+import WebHeader from "@/components/Nav";
+import WebFooter from "@/components/Footer";
+import Alert from "@/components/Alert";
+import GoTop from "@/components/GoTop";
 export default {
-  name: 'Front',
+  name: "Front",
   components: {
     WebHeader,
     Alert,
@@ -29,8 +28,8 @@ export default {
   },
   computed: {
     isLoading () {
-      return this.$store.state.isLoading
+      return this.$store.state.isLoading;
     }
   }
-}
+};
 </script>

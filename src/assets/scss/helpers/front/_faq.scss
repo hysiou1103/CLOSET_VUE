@@ -1,16 +1,16 @@
 .FAQ {
-    min-height: calc(100vh - 103px - 127px);
-    @include lowerIpad {
-        min-height: calc(100vh - 103px - 84px);
-    }
-    @include small-mobile {
-        min-height: calc(100vh - 114px - 103px);
-    }
-    li {
-        list-style-type: disc;
-        line-height: 2;
-    }
-    button:hover{
-        text-decoration: none;
-    }
+  min-height: calc(100vh - 103px - 127px);
+  @include lowerIpad {
+    min-height: calc(100vh - 103px - 84px);
+  }
+  @include small-mobile {
+    min-height: calc(100vh - 114px - 103px);
+  }
+  li {
+    list-style-type: disc;
+    line-height: 2;
+  }
+  button:hover{
+    text-decoration: none;
+  }
 }

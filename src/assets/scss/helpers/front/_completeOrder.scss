@@ -1,17 +1,16 @@
 .completeOrder{
-    min-height: calc(100vh - 103px - 127px);
-    @include lowerIpad {
-        min-height: calc(100vh - 103px - 84px);
+  min-height: calc(100vh - 103px - 127px);
+  @include lowerIpad {
+    min-height: calc(100vh - 103px - 84px);
+  }
+  @include small-mobile {
+    min-height: calc(100vh - 114px - 103px);
+  }
+  a {
+    font-weight: bolder;
+    &:hover,
+    &:active {
+      @include a
     }
-    @include small-mobile {
-        min-height: calc(100vh - 114px - 103px);
-    }
-    a {
-        font-weight: bolder;
-
-        &:hover,
-        &:active {
-            @include a
-        }
-    }
+  }
 }

@@ -1,63 +1,61 @@
 .couponWrap{
-    max-width: 600px;
-    margin: 0 auto;
-    min-height: calc(100vh - 103px - 127px);
-    @include lowerIpad {
-        min-height: calc(100vh - 103px - 84px);
-    }
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: calc(100vh - 103px - 127px);
+  @include lowerIpad {
+    min-height: calc(100vh - 103px - 84px);
+  }
+  @include small-mobile {
+    min-height: calc(100vh - 114px - 103px);
+  }
+  .frontCoupon {
+    border: 1px solid rgba($color: $primary, $alpha: 0.4);
+    border-radius: 10px;
+    position: relative;
+    &::before,&::after{
+      content: '';
+      background-color: white;
+      position: absolute;
 
-    @include small-mobile {
-        min-height: calc(100vh - 114px - 103px);
+      width: 20px;
+      height: 15px;
+      border-radius: 50%;
     }
-    .frontCoupon {
-        border: 1px solid rgba($color: $primary, $alpha: 0.4);
-        border-radius: 10px;
-        position: relative;
-        &::before,&::after{
-            content: '';
-            background-color: white;
-            position: absolute;
-
-            width: 20px;
-            height: 15px;
-            border-radius: 50%;
-        }
-        &::before{
-            left: -2%;
-            bottom: 35%;
-            border-right: 1px solid rgba($color: $primary, $alpha: 0.8);
-        }
-        &::after {
-            right: -2%;
-            bottom: 35%;
-            border-left: 1px solid rgba($color: $primary, $alpha: 0.8);
-        }
+    &::before{
+      left: -2%;
+      bottom: 35%;
+      border-right: 1px solid rgba($color: $primary, $alpha: 0.8);
     }
-    img{
-        @include mobile{
-            display: none;
-        }
+    &::after {
+      right: -2%;
+      bottom: 35%;
+      border-left: 1px solid rgba($color: $primary, $alpha: 0.8);
     }
+  }
+  img{
+    @include mobile{
+      display: none;
+    }
+  }
 }
 .ClicktoUse{
-    border-top: 1px solid rgba($secondary,0.3);
-    input{
-        border: none;
+  border-top: 1px solid rgba($secondary,0.3);
+  input{
+    border: none;
+  }
+  button {
+    @include button(white)
+  }
+  i{
+    @include small-mobile{
+      display: none;
     }
-    button {
-        @include button(white)
-    }
-    i{
-        @include small-mobile{
-            display: none;
-        }
-    }
-    .h6{
-        @include small-mobile{
-            font-size: 12px;
-        }
-    }
-
+  }
+  .h6{
+      @include small-mobile{
+        font-size: 12px;
+      }
+  }
 }
 
 

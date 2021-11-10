@@ -1,60 +1,59 @@
 .selected {
-    @include lowerIpad{
-        text-align: center;
-    }
+  @include lowerIpad{
+    text-align: center;
+  }
 }
 .pupolarItems {
+  @include lowerIpad{
+    padding-top: 10px;
+  }
+  .img {
+    max-height: 235px;
+    overflow: hidden;
+    position: relative;
+    @include desktop{
+      max-height: 170px;
+    }
     @include lowerIpad{
-        padding-top: 10px;
+      max-height: 180px;
     }
-    .img {
-        max-height: 235px;
-        overflow: hidden;
-        position: relative;
-        @include desktop{
-            max-height: 170px;
-        }
-        @include lowerIpad{
-            max-height: 180px;
-        }
-        @include mobile {
-            max-height: 146px;
-        }
-        @media (max-width:480px) 
-        {
-            max-height:200px ;   
-        }
-        @include small-mobile{
-            max-height: 145px;
-        }
-        &:hover {
-            filter: opacity(60%);
-
-            & button {
-                display: block;
-            }
-        }
-        img {
-            transition: transform .5s ease;
-        }
-        &:hover img {
-            transform: scale(1.2);
-        }
-        button {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 35.5%;
-        }
+    @include mobile {
+      max-height: 146px;
     }
-    .productTitle {
+    @media (max-width:480px) 
+    {
+      max-height:200px ;   
+    }
+    @include small-mobile{
+      max-height: 145px;
+    }
+    &:hover {
+      filter: opacity(60%);
+      & button {
         display: block;
-        font-weight: 600;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-        &:hover {
-            text-decoration: none;
-        }
+      }
     }
+    img {
+      transition: transform .5s ease;
+    }
+    &:hover img {
+      transform: scale(1.2);
+    }
+    button {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 35.5%;
+    }
+  }
+  .productTitle {
+    display: block;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }

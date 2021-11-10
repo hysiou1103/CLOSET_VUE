@@ -13,7 +13,7 @@ export default {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   },
-  created () {
+  mounted () {
     $(window).scroll(function () {
       const height = $(window).scrollTop()
       if (height > 100) {

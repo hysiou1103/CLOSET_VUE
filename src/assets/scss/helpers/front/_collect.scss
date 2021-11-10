@@ -1,121 +1,102 @@
 .favItems-list {
-    padding-left: 0;
+  padding-left: 0;
 
-    @include mobile {
-        justify-content: center;
+  @include mobile {
+    justify-content: center;
+  }
+
+  li {
+    width: 29%;
+    margin: 0 2% 0 2%;
+    @include lowerIpad {
+      width: 46%;
+    }
+    @include small-mobile {
+      width: 75%;
     }
 
-    li {
-        width: 29%;
-        margin: 0 2% 0 2%;
+    .img {
+      max-height: 300px;
+      overflow: hidden;
+      position: relative;
+      @include desktop {
+        max-height: 245px;
+      }
+      @include lowerIpad {
+        max-height: 280px;
+      }
 
-        @include lowerIpad {
-            width: 46%;
+      @include mobile {
+        max-height: 215px;
+      }
+
+      @include small-mobile {
+        max-height: 250px;
+      }
+      &:hover {
+        filter: opacity(60%);
+        & button {
+          display: block;
         }
+      }
+      img {
+        transition: transform .5s ease;
+      }
 
-        @include small-mobile {
-            width: 75%;
-        }
-
-        .img {
-            max-height: 300px;
-            overflow: hidden;
-            position: relative;
-
-            @include desktop {
-                max-height: 245px;
-            }
-
-            @include lowerIpad {
-                max-height: 280px;
-            }
-
-            @include mobile {
-                max-height: 215px;
-            }
-
-            @include small-mobile {
-                max-height: 250px;
-            }
-
-            &:hover {
-                filter: opacity(60%);
-
-                & button {
-                    display: block;
-                }
-            }
-
-            img {
-                transition: transform .5s ease;
-            }
-
-            &:hover img {
-                transform: scale(1.2);
-            }
-
-            button {
-                display: none;
-                position: absolute;
-                top: 50%;
-                left: 35.5%;
-            }
-
-        }
-
-        .deleteIcon {
-            color: rgba($color: $secondary, $alpha: 0.4);
-            transition: transform 0.5s ease;
-
-            &:hover,
-            &:active {
-                transform: scale(1.2);
-                color: rgba($color: $secondary, $alpha: 0.8);
-            }
-        }
-
-        .card-body {
-            padding: 1rem;
-        }
-
-        .card-title {
-            height: 48px;
-
-            @include small-mobile {
-                height: 25px;
-            }
-
-        }
-
-        .addcart .btn {
-            width: 90%;
-        }
+      &:hover img {
+        transform: scale(1.2);
+      }
+      button {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 35.5%;
+      }
     }
+    .deleteIcon {
+      color: rgba($color: $secondary, $alpha: 0.4);
+      transition: transform 0.5s ease;
+      &:hover,
+      &:active {
+        transform: scale(1.2);
+        color: rgba($color: $secondary, $alpha: 0.8);
+      }
+    }
+    .card-body {
+      padding: 1rem;
+    }
+    .card-title {
+      height: 48px;
+      @include small-mobile {
+        height: 25px;
+      }
+    }
+    .addcart .btn {
+      width: 90%;
+    }
+  }
 }
 
 .emptyCollect {
-    margin: 0 auto;
-    min-height: calc(100vh - 103px - 127px);
+  margin: 0 auto;
+  min-height: calc(100vh - 103px - 127px);
 
-    @include lowerIpad {
-        min-height: calc(100vh - 103px - 84px);
-    }
+  @include lowerIpad {
+    min-height: calc(100vh - 103px - 84px);
+  }
 
+  @include small-mobile {
+    min-height: calc(100vh - 114px - 103px);
+  }
+  a {
     @include small-mobile {
-        min-height: calc(100vh - 114px - 103px);
+      font-size: 1rem;
     }
-
-    a {
-        @include small-mobile {
-            font-size: 1rem;
-        }
+  }
+  .smaller {
+    display: inline-block;
+    @media (min-width:767px) {
+      display: none;
     }
-
-    .smaller {
-        display: inline-block;
-
-        @media (min-width:767px) {
-            display: none;
-        }
-    }
+  }
 }

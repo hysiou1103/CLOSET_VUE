@@ -1,76 +1,71 @@
 .cart{
-    min-height: calc(100vh - 103px - 127px);
-    @include lowerIpad {
-        min-height: calc(100vh - 103px - 84px);
-    }
-
-    @include small-mobile {
-        min-height: calc(100vh - 114px - 103px);
-    }
+  min-height: calc(100vh - 103px - 127px);
+  @include lowerIpad {
+    min-height: calc(100vh - 103px - 84px);
+  }
+  @include small-mobile {
+    min-height: calc(100vh - 114px - 103px);
+  }
 }
 .cartInfo{
-    box-shadow: none;
-    thead th{
-        border-bottom: none;
+  box-shadow: none;
+  thead th{
+    border-bottom: none;
+  }
+  tbody{
+    border-bottom:1px solid rgba($secondary, 0.4);
+    input {
+      border: 1px solid $secondary;
     }
-    tbody{
-        border-bottom:1px solid rgba($secondary, 0.4);
-        input {
-            border: 1px solid $secondary;
-        }
-    }
-    .cartImg {
-        max-width: 100px;
-    }
+  }
+  .cartImg {
+    max-width: 100px;
+  }
 }
 .priceCheck {
-    input {
-        border-top: none;
-        border-left: none;
-        border-right: none;
+  input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+  td{
+    border: none;
+    padding: 5px;
+  }
+  & tr:nth-child(1){
+    border-bottom: 1px solid rgba($secondary, 0.2);
+  }
+  button,a{
+    @include button(white)
+  }
+  .normalcheck{
+    @include small-mobile {
+      display: none;
     }
-    td{
-        border: none;
-        padding: 5px;
+  }
+  .tinycheck{
+    display: none;
+    @include small-mobile{
+      display: block;
     }
-    & tr:nth-child(1){
-        border-bottom: 1px solid rgba($secondary, 0.2);
-    }
-    button,a{
-        @include button(white)
-    }
-    .normalcheck{
-        @include small-mobile {
-            display: none;
-        }
-    }
-    .tinycheck{
-        display: none;
-        @include small-mobile{
-            display: block;
-        }
-    }
-    .form-check a:hover,
-    a:active {
-        color: theme-color-level(primary,3);
-        text-decoration: none;
-    }
+  }
+  .form-check a:hover,
+  a:active {
+    color: theme-color-level(primary,3);
+    text-decoration: none;
+  }
 
 }
 .disabled{
-    pointer-events: none;
+  pointer-events: none;
 }
 .emptyCart{
-    line-height:  calc(100vh - 103px - 127px);
-
-    @include lowerIpad {
-        line-height: calc(100vh - 103px - 84px);
-    }
-
-    @include small-mobile {
-        line-height: calc(100vh - 114px - 103px);
-    }
-
-    ;
+  line-height:  calc(100vh - 103px - 127px);
+  @include lowerIpad {
+    line-height: calc(100vh - 103px - 84px);
+  }
+  @include small-mobile {
+    line-height: calc(100vh - 114px - 103px);
+  }
 }
     

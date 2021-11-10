@@ -1,8 +1,8 @@
 .progress{
-    height: 10px;
+  height: 10px;
 }
 .orderNav .nav-link{
-    @include small-mobile{
-        padding: 0.5rem 0.5rem;
-    }
+  @include small-mobile{
+    padding: 0.5rem 0.5rem;
+  }
 }
