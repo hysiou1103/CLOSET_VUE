@@ -151,6 +151,9 @@
       background-color: $light;
       border-color: rgba($light,0.4);
     }
+    &.prohibit{
+      cursor: not-allowed;
+    }
   }
 }
 .adsWrap{

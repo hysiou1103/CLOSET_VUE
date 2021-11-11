@@ -242,6 +242,7 @@ export default {
       this.$store.dispatch('updateStorage', { item, num })
     },
     async addCart () {
+      // 將購物車列表傳送至伺服器，並清空localStorage購物車
       await this.$store.dispatch('addCart')
       this.$router.push('/customer-order')
     }
@@ -256,7 +257,7 @@ export default {
       }, 0)
     },
     isLoading () {
-      return this.$store.isLoading
+      return this.$store.state.isLoading
     }
   },
   created () {

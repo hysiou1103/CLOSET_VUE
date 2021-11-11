@@ -38,7 +38,7 @@
           </div>
           <div class="price d-flex justify-content-between my-2">
             <div class="h5 text-danger">{{ product.price | currency }}</div>
-            <div class="text-secondary">
+            <div class="text-secondary" v-if="product.origin_price">
               <s>{{ product.origin_price | currency }}</s>
             </div>
           </div>
@@ -215,9 +215,13 @@
             </div>
           </div>
           <div class="similarItem">
-            <p class="text-secondary">猜您喜歡...</p>
-            <ul class="d-flex flex-wrap similarList" v-if="allProducts !== []">
-              <li v-for="item in allProducts" :key="item.id">
+            <div class="h5 text-secondary text-center text-md-left font-weight-bold py-2">
+              猜您喜歡...
+            </div>
+            <ul class="d-flex flex-wrap justify-content-around
+              justify-content-md-start similarList" v-if="allProducts !== []"
+            >
+              <li v-for="item in allProducts" :key="item.id" @click.prevent="getDetail(item.id)">
                 <router-link
                   :to="{
                     name: 'productDetail',

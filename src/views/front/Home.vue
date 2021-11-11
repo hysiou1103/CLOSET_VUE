@@ -112,7 +112,7 @@
                 訂閱<span class="d-none d-md-inline-block">電子報</span
                 >以取得最新商品及優惠資訊
               </div>
-              <ValidationProvider rules="required|email" v-slot="{ classes }">
+              <ValidationProvider rules="required|email" v-slot="{ errors, classes }">
                 <div class="d-flex">
                   <input
                     type="email"
@@ -126,6 +126,8 @@
                     class="btn btn-dark"
                     type="button"
                     @click="checkedMail"
+                    :disabled="errors[0]"
+                    :class="{'prohibit' :errors[0] }"
                   >
                     SUBSCRIBE
                   </button>

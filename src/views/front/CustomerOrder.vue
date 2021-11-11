@@ -284,9 +284,6 @@ export default {
       return this.$store.state.apiCarts;
     }
   },
-  created () {
-    this.getCart();
-  },
   mounted () {
     setTimeout(() => {
       document.querySelector(".preFadein").classList.add("fadeIn");

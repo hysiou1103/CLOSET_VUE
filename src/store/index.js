@@ -35,6 +35,10 @@ export default new Vuex.Store({
       state.carts.splice(num, 1)
       localStorage.setItem('carts', JSON.stringify(state.carts))
     },
+    CLEARCARTSTORAGE (state) {
+      state.carts.splice(0, state.carts.length);
+      localStorage.setItem('carts', JSON.stringify(state.carts))
+    },
     UPDATESTORAGE (state, payload) {
       state.carts.forEach((item, key) => {
         if (item.product_id === payload.item.product_id) {
@@ -85,6 +89,7 @@ export default new Vuex.Store({
         await axios.post(addApi, { data: data })
       }
       context.dispatch('getCart')
+      context.commit('CLEARCARTSTORAGE')
       context.commit('LOADING', false)
     },
     getCart (context) {
