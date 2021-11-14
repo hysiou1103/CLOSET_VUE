@@ -164,26 +164,19 @@ export default {
     };
   },
   methods: {
-    getProducts () {
-      // 取得全部產品資料
+    async getProducts () {
       const vm = this;
       vm.$store.dispatch("isLoading", true);
-      const apiAll = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/products/all`;
-      vm.$http
-        .get(apiAll)
-        .then((response) => {
-          if (response.data.success) {
-            vm.allProducts = response.data.products.filter(
-              (item) => item.is_enabled
-            );
-            document.querySelector(".productsWrap").classList.add("fadeIn");
-            vm.$store.dispatch("isLoading", false);
-          }
-        })
-        .catch((err) => {
-          vm.$bus.$emit("messagePush", err, "warning");
-          vm.$store.dispatch("isLoading", false);
-        });
+      const apiAll = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/products/all`
+      try {
+        const response = await vm.$http.get(apiAll)
+        vm.allProducts = response.data.products.filter((item) => item.is_enabled)
+        vm.$store.dispatch("isLoading", false)
+      } catch (err) {
+        vm.$bus.$emit("messagePush", err, "warning")
+        vm.$store.dispatch("isLoading", false)
+      }
+      vm.$nextTick(() => { document.querySelector(".productsWrap").classList.add("fadeIn") })
     },
     getFilter (e) {
       // 點擊分類時取得選單filter值，並初始化currentPage及count值，使資料從第一筆開始渲染
@@ -224,49 +217,49 @@ export default {
       }
     },
     changePage (page) {
-      const vm = this;
-      vm.count = (page - 1) * 9;
-      vm.pagination.current_page = page;
+      const vm = this
+      vm.count = (page - 1) * 9
+      vm.pagination.current_page = page
     },
     addFav (item) {
       // 加入收藏
-      const vm = this;
-      vm.favItems.push(item);
-      vm.favItemsId.push(item.id);
-      localStorage.setItem("favItems", JSON.stringify(vm.favItems));
-      localStorage.setItem("favItemsId", JSON.stringify(vm.favItemsId));
+      const vm = this
+      vm.favItems.push(item)
+      vm.favItemsId.push(item.id)
+      localStorage.setItem("favItems", JSON.stringify(vm.favItems))
+      localStorage.setItem("favItemsId", JSON.stringify(vm.favItemsId))
     },
     removeFav (item) {
       // 移除收藏
-      const vm = this;
-      const idNum = vm.favItemsId.indexOf(item.id);
-      vm.favItems.splice(idNum, 1);
-      vm.favItemsId.splice(idNum, 1);
-      localStorage.setItem("favItems", JSON.stringify(vm.favItems));
-      localStorage.setItem("favItemsId", JSON.stringify(vm.favItemsId));
+      const vm = this
+      const idNum = vm.favItemsId.indexOf(item.id)
+      vm.favItems.splice(idNum, 1)
+      vm.favItemsId.splice(idNum, 1)
+      localStorage.setItem("favItems", JSON.stringify(vm.favItems))
+      localStorage.setItem("favItemsId", JSON.stringify(vm.favItemsId))
     }
   },
   computed: {
     filterProducts () {
       // 當filter值改變，依值過濾資料
-      const vm = this;
-      let filterProducts = [];
+      const vm = this
+      let filterProducts = []
       if (vm.filter === "All") {
         // 渲染全部商品
-        vm.buildPageForm(vm.allProducts.length);
-        return vm.allProducts;
+        vm.buildPageForm(vm.allProducts.length)
+        return vm.allProducts
       }
       filterProducts = vm.allProducts.filter((item) =>
         item.category.match(vm.filter)
       );
-      vm.buildPageForm(filterProducts.length);
-      return filterProducts;
+      vm.buildPageForm(filterProducts.length)
+      return filterProducts
     }
   },
   created () {
-    const vm = this;
-    vm.getProducts();
-    vm.getFilterFromHome(vm.$route.query.cate);
+    const vm = this
+    vm.getFilterFromHome(vm.$route.query.cate)
+    vm.getProducts()
   }
 };
 </script>

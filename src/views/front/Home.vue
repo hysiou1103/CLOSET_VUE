@@ -126,8 +126,8 @@
                     class="btn btn-dark"
                     type="button"
                     @click="checkedMail"
-                    :disabled="errors[0]"
-                    :class="{'prohibit' :errors[0] }"
+                    :disabled="errors[0]||mail === ''"
+                    :class="{'prohibit' :errors[0]||mail === ''}"
                   >
                     SUBSCRIBE
                   </button>
