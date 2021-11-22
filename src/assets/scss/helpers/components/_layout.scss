@@ -77,22 +77,22 @@
       display: none;
     }
     .dropdown-menu {
-      overflow: auto;
+      overflow-y: auto;
+      overflow-x: hidden;
+      width: 310px;
       max-height: 320px;
       a:hover,a:active{
         color: white;
         border: none;
       }
-      small a{
+      .empty a.btn{
+        border-bottom: 1px solid $warning;
+        width: 80%;
         &:hover,&:active{
-          color: theme-color-level(primary,4);
-          border: none;
+          @include button(white)
         }
       }
-      .empty{
-        width:250px
-      }
-      .text-truncate a{
+      tr>td>a{
         &:hover,&:active{
           color: theme-color-level(primary,4);
         }
@@ -127,10 +127,8 @@
       width: 90%;
       border-bottom: 1px solid $warning;
     }
-    tr td:nth-child(1) {
-      max-width: 110px;
-      white-space: nowrap;
-      overflow: hidden;
+    th,td{
+      padding: 0.4rem;
     }
     tbody>tr:nth-child(1) {
       border-top: 1px solid rgba($color: $secondary, $alpha: 0.2);

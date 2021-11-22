@@ -12,6 +12,17 @@
     color: $theme;
   }
 }
+@mixin mainHeight{
+  min-height: calc(100vh - 103px - 127px);
+
+  @include lowerIpad {
+    min-height: calc(100vh - 103px - 84px);
+  }
+
+  @include small-mobile {
+    min-height: calc(100vh - 114px - 103px);
+  }
+}
 
 // 斷點
 @mixin desktop{

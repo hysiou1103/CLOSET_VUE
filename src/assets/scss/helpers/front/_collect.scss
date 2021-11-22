@@ -79,24 +79,8 @@
 
 .emptyCollect {
   margin: 0 auto;
-  min-height: calc(100vh - 103px - 127px);
-
-  @include lowerIpad {
-    min-height: calc(100vh - 103px - 84px);
-  }
-
-  @include small-mobile {
-    min-height: calc(100vh - 114px - 103px);
-  }
-  a {
-    @include small-mobile {
-      font-size: 1rem;
-    }
-  }
-  .smaller {
-    display: inline-block;
-    @media (min-width:767px) {
-      display: none;
-    }
+  @include mainHeight;
+  a{
+    @include button(white)
   }
 }

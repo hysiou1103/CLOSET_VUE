@@ -3,7 +3,7 @@
     <div class="text-right">
       <button
         type="button"
-        class="btn btn-primary text-white my-3"
+        class="btn btn-primary text-white my-3 d-none d-md-inline-block"
         @click="openModal('new')"
       >
         新增優惠券

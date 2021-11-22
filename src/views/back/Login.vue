@@ -1,5 +1,10 @@
 <template>
   <div class="login">
+    <loading :active.sync="isLoading">
+      <template slot="default">
+        <img src="@/assets/img/loading.gif" />
+      </template>
+    </loading>
     <Alert />
     <div class="m-2">
       <router-link to="/" class="d-block text-primary text-center p-4 h3"
@@ -67,25 +72,31 @@ export default {
     login () {
       // 登入成功後跳轉至商品管理
       const vm = this;
-      vm.$store.dispatch("isLoading", true);
-      const api = `${process.env.VUE_APP_APIPATH}/admin/signin`;
+      vm.$store.dispatch("isLoading", true)
+      const api = `${process.env.VUE_APP_APIPATH}/admin/signin`
       vm.$http
         .post(api, vm.user)
         .then((response) => {
           if (response.data.success) {
             const token = response.data.token;
             const expired = new Date(response.data.expired);
-            document.cookie = `hexToken=${token}; expires=${expired}`;
-            vm.$router.push("/admin/product");
+            document.cookie = `hexToken=${token}; expires=${expired}`
+            vm.$store.dispatch("isLoading", false)
+            vm.$router.push("/admin/product")
           } else {
-            vm.$bus.$emit("messagePush", response.data.message, "danger");
+            vm.$bus.$emit("messagePush", response.data.message, "warning")
+            vm.$store.dispatch("isLoading", false)
           }
-          vm.$store.dispatch("isLoading", false);
         })
         .catch((err) => {
-          vm.$bus.$emit("messagePush", err, "warning");
+          console.log(err)
           vm.$store.dispatch("isLoading", false);
         });
+    }
+  },
+  computed: {
+    isLoading () {
+      return this.$store.state.isLoading
     }
   }
 };

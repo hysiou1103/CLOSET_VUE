@@ -49,29 +49,28 @@
                 <!-- 有商品 -->
                 <table class="table table-borderless" v-if="carts.length !== 0">
                   <thead>
-                    <th>名稱</th>
-                    <th class="text-nowrap text-center">數量</th>
+                    <th width="160">名稱</th>
+                    <th width="45" class="text-center">數量</th>
                     <th class="text-center">價格</th>
-                    <th class="text-nowrap text-center">刪除</th>
+                    <th width="45" class="text-center">刪除</th>
                   </thead>
                   <tbody>
                     <tr v-for="item in carts" :key="item.product_id">
-                      <td class="text-truncate">
+                      <td>
                         <router-link
                           :to="{
                             name: 'productDetail',
                             params: { productId: item.product_id },
                           }"
-                          :title="item.title"
                         >
                           {{ item.title }}
                         </router-link>
                       </td>
                       <td class="text-center">{{ item.qty }}</td>
-                      <td class="text-center">
+                      <td class="text-right">
                         {{ (parseInt(item.price) * item.qty) | currency }}
                       </td>
-                      <td width="150">
+                      <td>
                         <button
                           type="button"
                           class="btn btn-outline-danger btn-sm"
@@ -97,17 +96,17 @@
                   </tfoot>
                 </table>
                 <!-- 沒有商品 -->
-                <small>
+                <div class="empty d-flex flex-column justify-content-center align-items-center" v-else>
+                  <small class="text-primary">購物車還沒有商品哦!</small>
                   <router-link
                     to="/products"
-                    class="nav-link empty"
-                    v-if="carts.length === 0"
+                    class="btn btn-sm btn-outline-warning my-1"
                   >
                     <i class="far fa-hand-point-right"></i>
-                    更多精選商品，立即前往挑選
+                    來去逛逛
                     <i class="far fa-hand-point-left"></i>
                   </router-link>
-                </small>
+                </div>
               </div>
             </li>
             <li>

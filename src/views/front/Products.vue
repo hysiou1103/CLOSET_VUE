@@ -170,12 +170,15 @@ export default {
       const apiAll = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/products/all`
       try {
         const response = await vm.$http.get(apiAll)
-        vm.allProducts = response.data.products.filter((item) => item.is_enabled)
-        vm.$store.dispatch("isLoading", false)
+        if (response.data.success) {
+          vm.allProducts = response.data.products.filter((item) => item.is_enabled)
+        } else {
+          vm.$bus.$emit("messagePush", response.data.message, "warning")
+        }
       } catch (err) {
-        vm.$bus.$emit("messagePush", err, "warning")
-        vm.$store.dispatch("isLoading", false)
+        console.log(err)
       }
+      vm.$store.dispatch("isLoading", false)
       vm.$nextTick(() => { document.querySelector(".productsWrap").classList.add("fadeIn") })
     },
     getFilter (e) {

@@ -67,19 +67,18 @@
           class="
             emptyCollect
             d-flex
-            align-items-center
+            flex-column
             justify-content-center
+            align-items-center
             autoPlay
           "
         >
-          <router-link to="/products" class="nav-link d-md-block d-none h5">
+          <p class="text-primary my-3">小幫手發現您還沒收藏任何商品哦～</p>
+          <router-link to="/products" class="btn btn-lg
+            btn-outline-warning"
+          >
             <i class="far fa-hand-point-right"></i>
-            您尚未收藏任何商品，立即前往賣場選購
-            <i class="far fa-hand-point-left"></i>
-          </router-link>
-          <router-link to="/products" class="nav-link smaller">
-            <i class="far fa-hand-point-right"></i>
-            您尚未收藏任何商品，立即前往賣場選購
+            點我來去逛逛！
             <i class="far fa-hand-point-left"></i>
           </router-link>
         </div>

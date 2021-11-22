@@ -2,7 +2,7 @@
   <div class="adminProduct">
     <div class="text-right">
       <button type="button"
-      class="btn btn-primary text-white my-3"
+      class="btn btn-primary text-white my-3 d-none d-md-inline-block"
       @click="openModal('new')"
       >
         建立新產品
@@ -28,7 +28,7 @@
               <span v-if="item.is_enabled" class="text-success">啟用</span>
               <span v-else>未啟用</span>
             </td>
-            <td class="text-center d-md-block">
+            <td class="text-center d-md-table-cell">
               <button
                 type="button"
                 class="btn btn-outline-primary btn-sm mr-1"
@@ -282,7 +282,7 @@ export default {
     getProducts (page = 1) {
       // 取得產品列表
       const vm = this;
-      vm.$store.dispatch("isLoading", false);
+      vm.$store.dispatch("isLoading", true);
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/products?page=${page}`;
       vm.$http
         .get(api)
@@ -317,7 +317,7 @@ export default {
             vm.$bus.$emit("messagePush", response.data.message, "success");
             return;
           }
-          vm.$bus.$emit("messagePush", response.data.message, "danger");
+          vm.$bus.$emit("messagePush", response.data.message, "warning");
         })
         .catch((err) => {
           vm.$bus.$emit("messagePush", err, "warning");
@@ -360,12 +360,12 @@ export default {
             vm.$set(vm.tempProduct, "imageUrl", response.data.imageUrl);
             e.target.value = "";
           } else {
-            vm.$bus.$emit("messagePush", response.data.message, "danger");
+            vm.$bus.$emit("messagePush", response.data.message, "warning");
           }
           vm.status.fileUploading = false;
         })
         .catch((err) => {
-          vm.$bus.$emit("messagePush", err, "warning");
+          console.log(err)
         });
     },
     openModal (status, item) {
